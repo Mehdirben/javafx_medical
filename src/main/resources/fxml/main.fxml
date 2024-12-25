@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.medical.controller.MainController"
+            stylesheets="/styles/main.css">
+    
+    <left>
+        <VBox styleClass="sidebar">
+            <Text text="Medical Assistant" fill="white" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Separator style="-fx-background-color: #636e72; -fx-opacity: 0.3;">
+                <VBox.margin>
+                    <Insets top="10" bottom="20"/>
+                </VBox.margin>
+            </Separator>
+            <Button text="💬 Chat Consultation" onAction="#showChat" styleClass="nav-button"/>
+            <Button text="🔍 Diagnosis" onAction="#showDiagnosis" styleClass="nav-button"/>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+            <VBox fx:id="chatPane" visible="false" spacing="15">
+                <Text text="Chat Consultation" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <VBox styleClass="content-pane" VBox.vgrow="ALWAYS" spacing="15">
+                    <TextArea fx:id="chatMessages" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="10" alignment="CENTER">
+                        <TextField fx:id="chatInput" HBox.hgrow="ALWAYS" promptText="Type your message here..."/>
+                        <Button text="Send" onAction="#sendMessage"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <VBox fx:id="diagnosisPane" visible="false" spacing="15">
+                <Text text="Symptom Analysis" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <VBox styleClass="content-pane" spacing="15">
+                    <Text text="Describe your symptoms" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <TextArea fx:id="symptomsInput" promptText="Please describe your symptoms in detail..." 
+                             wrapText="true" prefRowCount="5"/>
+                    <Button text="Analyze Symptoms" onAction="#getDiagnosis"/>
+                    <TextArea fx:id="diagnosisResult" editable="false" wrapText="true" 
+                             VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </center>
+    
+</BorderPane>

@@ -1,0 +1,4 @@
+com\medical\controller\MainController.class
+com\medical\MedicalApplication.class
+com\medical\service\DiagnosisService.class
+com\medical\service\ChatbotService.class
