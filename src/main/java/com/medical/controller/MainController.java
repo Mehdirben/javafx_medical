@@ -30,21 +30,28 @@ public class MainController {
         // Show chat pane by default
         showChat();
         
+        // Chat input handler
         chatInput.getStyleClass().add("chat-input");
+        setupKeyHandler(chatInput, this::sendMessage);
         
-        // Replace the existing key event handler with this one
-        chatInput.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+        // Diagnosis input handler
+        symptomsInput.getStyleClass().add("chat-input");
+        setupKeyHandler(symptomsInput, this::getDiagnosis);
+    }
+    
+    private void setupKeyHandler(TextArea textArea, Runnable action) {
+        textArea.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                event.consume(); // Prevent the enter from being processed
+                event.consume();
                 
                 if (event.isShiftDown()) {
                     // Manually add new line at current caret position
-                    int caretPosition = chatInput.getCaretPosition();
-                    String text = chatInput.getText();
-                    chatInput.setText(text.substring(0, caretPosition) + "\n" + text.substring(caretPosition));
-                    chatInput.positionCaret(caretPosition + 1);
+                    int caretPosition = textArea.getCaretPosition();
+                    String text = textArea.getText();
+                    textArea.setText(text.substring(0, caretPosition) + "\n" + text.substring(caretPosition));
+                    textArea.positionCaret(caretPosition + 1);
                 } else {
-                    sendMessage();
+                    action.run();
                 }
             }
         });
