@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 public class MainController {
+    @FXML private VBox homePane;
     @FXML private VBox chatPane;
     @FXML private VBox diagnosisPane;
     @FXML private TextArea chatMessages;
@@ -27,8 +28,8 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        // Show chat pane by default
-        showChat();
+        // Show home page by default instead of chat
+        showHome();
         
         // Chat input handler
         chatInput.getStyleClass().add("chat-input");
@@ -58,13 +59,22 @@ public class MainController {
     }
 
     @FXML
+    public void showHome() {
+        homePane.setVisible(true);
+        chatPane.setVisible(false);
+        diagnosisPane.setVisible(false);
+    }
+
+    @FXML
     public void showChat() {
+        homePane.setVisible(false);
         chatPane.setVisible(true);
         diagnosisPane.setVisible(false);
     }
 
     @FXML
     public void showDiagnosis() {
+        homePane.setVisible(false);
         chatPane.setVisible(false);
         diagnosisPane.setVisible(true);
     }

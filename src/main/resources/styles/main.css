@@ -110,3 +110,34 @@
     -fx-effect: dropshadow(gaussian, rgba(9, 132, 227, 0.2), 6, 0, 0, 0);
     -fx-translate-y: 1;
 }
+
+.feature-card {
+    -fx-background-color: white;
+    -fx-padding: 25;
+    -fx-spacing: 15;
+    -fx-alignment: CENTER;
+    -fx-min-width: 250;
+    -fx-max-width: 300;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.feature-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 0);
+    -fx-translate-y: -2;
+}
+
+.feature-card:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0, 0, 0);
+    -fx-translate-y: 1;
+}
+
+.disclaimer-box {
+    -fx-background-color: #fff3cd;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #ffeeba;
+    -fx-border-radius: 10;
+}

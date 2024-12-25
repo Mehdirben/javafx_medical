@@ -19,6 +19,7 @@
                     <Insets top="10" bottom="20"/>
                 </VBox.margin>
             </Separator>
+            <Button text="🏠 Home" onAction="#showHome" styleClass="nav-button"/>
             <Button text="💬 Chat Consultation" onAction="#showChat" styleClass="nav-button"/>
             <Button text="🔍 Diagnosis" onAction="#showDiagnosis" styleClass="nav-button"/>
         </VBox>
@@ -26,6 +27,40 @@
     
     <center>
         <StackPane style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+            <VBox fx:id="homePane" spacing="15">
+                <Text text="Welcome to Medical Assistant" 
+                      style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
+                <VBox styleClass="content-pane" spacing="30">
+                    <Text text="How can we help you today?" 
+                          style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    
+                    <HBox spacing="20" alignment="CENTER">
+                        <VBox styleClass="feature-card" onMouseClicked="#showChat">
+                            <Text text="💬" style="-fx-font-size: 40px;"/>
+                            <Text text="Chat Consultation" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                            <Label text="Get instant medical advice through our AI-powered chat system" 
+                                  style="-fx-font-size: 14px;" wrapText="true"/>
+                        </VBox>
+                        
+                        <VBox styleClass="feature-card" onMouseClicked="#showDiagnosis">
+                            <Text text="🔍" style="-fx-font-size: 40px;"/>
+                            <Text text="Symptom Analysis" 
+                                  style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                            <Label text="Describe your symptoms for a preliminary diagnosis" 
+                                  style="-fx-font-size: 14px;" wrapText="true"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <VBox styleClass="disclaimer-box">
+                        <Text text="⚠️ Medical Disclaimer" 
+                              style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <Label text="This application provides general information and is not a substitute for professional medical advice. Always consult with a qualified healthcare provider for medical diagnosis and treatment."
+                              style="-fx-font-size: 14px;" wrapText="true"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+            
             <VBox fx:id="chatPane" visible="false" spacing="15">
                 <Text text="Chat Consultation" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
                 <VBox styleClass="content-pane" VBox.vgrow="ALWAYS" spacing="15">
