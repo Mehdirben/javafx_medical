@@ -5,7 +5,6 @@ import com.medical.service.DiagnosisService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -14,7 +13,7 @@ public class MainController {
     @FXML private VBox chatPane;
     @FXML private VBox diagnosisPane;
     @FXML private TextArea chatMessages;
-    @FXML private TextField chatInput;
+    @FXML private TextArea chatInput;  // Changed from TextField to TextArea
     @FXML private TextArea symptomsInput;
     @FXML private TextArea diagnosisResult;
 
@@ -31,15 +30,20 @@ public class MainController {
         // Show chat pane by default
         showChat();
         
-        // Add key event handler for chat input
+        chatInput.getStyleClass().add("chat-input");
+        
+        // Replace the existing key event handler with this one
         chatInput.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.ENTER) {
+                event.consume(); // Prevent the enter from being processed
+                
                 if (event.isShiftDown()) {
-                    // Shift+Enter: add new line
-                    chatInput.appendText("\n");
+                    // Manually add new line at current caret position
+                    int caretPosition = chatInput.getCaretPosition();
+                    String text = chatInput.getText();
+                    chatInput.setText(text.substring(0, caretPosition) + "\n" + text.substring(caretPosition));
+                    chatInput.positionCaret(caretPosition + 1);
                 } else {
-                    // Enter only: send message
-                    event.consume(); // Prevent default Enter behavior
                     sendMessage();
                 }
             }

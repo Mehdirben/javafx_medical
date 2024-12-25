@@ -31,7 +31,9 @@
                 <VBox styleClass="content-pane" VBox.vgrow="ALWAYS" spacing="15">
                     <TextArea fx:id="chatMessages" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
                     <HBox spacing="10" alignment="CENTER">
-                        <TextField fx:id="chatInput" HBox.hgrow="ALWAYS" promptText="Type your message here..."/>
+                        <TextArea fx:id="chatInput" HBox.hgrow="ALWAYS" 
+                                promptText="Type your message here..." 
+                                wrapText="true" prefRowCount="1"/>
                         <Button text="Send" onAction="#sendMessage"/>
                     </HBox>
                 </VBox>

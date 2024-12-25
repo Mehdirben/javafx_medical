@@ -72,6 +72,21 @@
     -fx-background-color: #e9ecef;
 }
 
+.chat-input {
+    -fx-pref-row-count: 1;
+    -fx-max-height: 80px;
+    -fx-background-color: #f1f2f6;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-padding: 8;
+}
+
+.chat-input .content {
+    -fx-background-color: transparent;
+}
+
 .button {
     -fx-background-color: #0984e3;
     -fx-text-fill: white;
